@@ -17,7 +17,7 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'body' => $this->faker->sentence(20, true)
+            'body' => $this->faker->sentences(3, true)
         ];
     }
 }
