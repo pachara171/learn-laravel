@@ -14,7 +14,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+
+        return view('posts.index', [
+            'posts' => $posts
+        ]);
     }
 
     /**
@@ -80,6 +84,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        if ($post->owner->id == auth()->user()->id){
+            $post->delete();
+
+        }
+
+        return redirect(route('posts.index'));
     }
 }
